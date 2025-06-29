@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<icecast>
+  <location>Railway</location>
+  <admin>admin@yourapp.com</admin>
+
+  <limits>
+    <clients>100</clients>
+    <sources>2</sources>
+    <queue-size>524288</queue-size>
+    <client-timeout>30</client-timeout>
+  </limits>
+
+  <authentication>
+    <source-password>hackme</source-password>
+    <admin-user>admin</admin-user>
+    <admin-password>adminpass</admin-password>
+  </authentication>
+
+  <hostname>0.0.0.0</hostname>
+  <listen-socket>
+    <port>8000</port>
+  </listen-socket>
+
+  <mount>
+    <mount-name>/live</mount-name>
+    <password>hackme</password>
+  </mount>
+
+  <fileserve>1</fileserve>
+</icecast>
