@@ -16,7 +16,6 @@
     <admin-password>adminpass</admin-password>
   </authentication>
 
-  <!-- 👇 This is required when not running as root -->
   <changeowner>
     <user>icecast</user>
     <group>icecast</group>
