@@ -2,6 +2,11 @@
 <icecast>
   <location>Railway</location>
   <admin>admin@yourapp.com</admin>
+  
+<changeowner>
+  <user>nobody</user>
+  <group>nogroup</group>
+</changeowner>
 
   <limits>
     <clients>100</clients>
