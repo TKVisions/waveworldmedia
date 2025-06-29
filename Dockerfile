@@ -10,4 +10,5 @@ COPY default.m3u /etc/liquidsoap/default.m3u
 
 EXPOSE 8000
 
-CMD bash -c "icecast2 -c /etc/icecast2/icecast.xml & sleep 2 && liquidsoap /etc/liquidsoap/radio.liq"
+CMD bash -c "icecast2 -c /etc/icecast2/icecast.xml & liquidsoap /etc/liquidsoap/radio.liq"
+
