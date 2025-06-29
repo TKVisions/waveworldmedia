@@ -2,11 +2,6 @@
 <icecast>
   <location>Railway</location>
   <admin>admin@yourapp.com</admin>
-  
-<changeowner>
-  <user>nobody</user>
-  <group>nogroup</group>
-</changeowner>
 
   <limits>
     <clients>100</clients>
@@ -21,15 +16,23 @@
     <admin-password>adminpass</admin-password>
   </authentication>
 
+  <!-- 👇 This is required when not running as root -->
+  <changeowner>
+    <user>icecast</user>
+    <group>icecast</group>
+  </changeowner>
+
   <hostname>0.0.0.0</hostname>
   <listen-socket>
     <port>8000</port>
   </listen-socket>
 
-  <mount>
-    <mount-name>/live</mount-name>
-    <password>hackme</password>
-  </mount>
-
   <fileserve>1</fileserve>
+
+  <paths>
+    <logdir>/var/log/icecast</logdir>
+    <webroot>/usr/share/icecast2/web</webroot>
+    <adminroot>/usr/share/icecast2/admin</adminroot>
+    <alias source="/" destination="/status.xsl"/>
+  </paths>
 </icecast>
