@@ -17,6 +17,7 @@
   </authentication>
 
   <hostname>0.0.0.0</hostname>
+
   <listen-socket>
     <port>8000</port>
   </listen-socket>
@@ -32,7 +33,8 @@
     <errorlog>/tmp/error.log</errorlog>
     <loglevel>3</loglevel>
     <logsize>10000</logsize>
-</logging>
+  </logging>
+</icecast>
 
 
 
