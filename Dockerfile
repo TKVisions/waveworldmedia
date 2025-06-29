@@ -10,6 +10,7 @@ COPY default.m3u /etc/liquidsoap/default.m3u
 
 EXPOSE 8000
 
-CMD ["icecast2", "-c", "/etc/icecast2/icecast.xml"]
+CMD bash -c "icecast2 -c /etc/icecast2/icecast.xml & sleep 2 && tail -f /dev/null"
+
 
 
