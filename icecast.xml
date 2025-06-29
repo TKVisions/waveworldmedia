@@ -28,8 +28,11 @@
   <fileserve>1</fileserve>
 
   <logging>
-    <accesslog>stderr</accesslog>
-    <errorlog>stderr</errorlog>
-    <loglevel>3</loglevel> <!-- info -->
-  </logging>
-</icecast>
+    <accesslog>/tmp/access.log</accesslog>
+    <errorlog>/tmp/error.log</errorlog>
+    <loglevel>3</loglevel>
+    <logsize>10000</logsize>
+</logging>
+
+
+
