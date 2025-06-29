@@ -10,7 +10,7 @@ output.icecast(
   password = "hackme",
   mount = "/autoplay",
   name = "My Railway Radio",
-  genre = "Global Radio",
   description = "Live + fallback radio",
+  genre = "Global Radio",
   url = "http://localhost:8000"
 )(radio)
