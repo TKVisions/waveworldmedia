@@ -4,6 +4,7 @@ default = playlist("/etc/liquidsoap/default.m3u")
 radio = fallback([live, default])
 
 output.icecast(
+  radio,
   mount = "/autoplay",
   host = "localhost",
   port = 8000,
@@ -11,6 +12,6 @@ output.icecast(
   name = "My Railway Radio",
   description = "Live + fallback radio",
   genre = "Global Radio",
-  url = "http://localhost:8000",
-  source = radio
+  url = "http://localhost:8000"
 )
+
