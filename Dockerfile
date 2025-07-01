@@ -1,26 +1,30 @@
+# Use a minimal Debian base image
 FROM debian:bullseye
 
-# Install dependencies
+# Create a non-root user for running services
+RUN useradd -m icecastuser
+
+# Install required packages
 RUN apt-get update && apt-get install -y \
     icecast2 liquidsoap curl && \
     apt-get clean
 
-# Create log directory and set permissions for Icecast to run as nobody
-RUN mkdir -p /usr/local/icecast/logs && chown -R nobody:nogroup /usr/local/icecast/logs
-
-# Copy config files
+# Copy configuration files into the image
 COPY icecast.xml /etc/icecast2/icecast.xml
 COPY radio.liq /etc/liquidsoap/radio.liq
 COPY default.m3u /etc/liquidsoap/default.m3u
 
-# Expose the correct port
-EXPOSE 8000
+# Set correct ownership for the config and log directories
+RUN chown -R icecastuser /etc/icecast2 /etc/liquidsoap /tmp
 
-# Run both services: Icecast2 and Liquidsoap
-CMD bash -c "icecast2 -c /etc/icecast2/icecast.xml & sleep 3 && exec liquidsoap /etc/liquidsoap/radio.liq"
+# Switch to the non-root user
+USER icecastuser
 
+# Expose port 80 (Railway expects port 80 or 3000 for HTTP apps)
+EXPOSE 80
 
-
+# Start Icecast and Liquidsoap together
+CMD bash -c "icecast2 -c /etc/icecast2/icecast.xml & sleep 2 && liquidsoap /etc/liquidsoap/radio.liq"
 
 
 
